@@ -1,0 +1,1 @@
+{'Kristjan': {'phonenumber': '5222471', 'city': 'Tallinn'}, 'Pille': {'phonenumber': '56934694', 'city': 'Jõgisoo'}, 'Silver': {'phonenumber': '56504948', 'city': 'Jõgisoo'}}

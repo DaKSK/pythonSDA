@@ -1,0 +1,1 @@
+{'Nabila': {'phonenumber': '53757130', 'city': 'Tallinn'}, 'Kristjan': {'phonenumber': '5222471', 'city': 'Tallinn'}, 'Jason': {'phonenumber': '2342342', 'city': 'LA'}}
