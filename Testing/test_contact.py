@@ -51,6 +51,11 @@ def valid_email_format():
 
 
 @pytest.fixture()
+def invalid_email():
+    return "domain.com"
+
+
+@pytest.fixture()
 def valid_mobile_number_input():
     return "+3725222471"
 
@@ -66,10 +71,10 @@ class TestCreateContact:
             contact = Contact(name)
 
     # @pytest.mark.skip(reason="not yet implemented")
-    def test_with_name_mobile_invalid_country_code(self, valid_name_input, invalid_number_input):
+    def test_with_name_mobile_invalid_country_code(self, valid_name_input, invalid_number_input, valid_home_number_input):
         with pytest.raises(ValueError):
-            contact = Contact(valid_name_input, mobile_phone=invalid_number_input)
+            contact = Contact(valid_name_input, home_phone=valid_home_number_input, mobile_phone=invalid_number_input)
 
-    def test_with_invalid_email(self, valid_name_input, valid_number_input):
-        contact = Contact(valid_name_input, valid_home_number_input, email="sda.com")
+    def test_with_invalid_email(self, valid_name_input, valid_mobile_number_input, invalid_email):
+        contact = Contact(valid_name_input, mobile_phone=valid_mobile_number_input, email=invalid_email)
         assert contact.email == ""

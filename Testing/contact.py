@@ -4,8 +4,13 @@ class Contact:
         if home_phone is None and mobile_phone is None:
             raise ValueError
 
-        if not home_phone.startswith("+372"):
+        # if not home_phone.startswith("+372"):
+        #     raise ValueError
+        # self.home_phone = home_phone
+
+        if not mobile_phone.startswith("+372"):
             raise ValueError
+        self.mobile_phone = mobile_phone
 
         if "@" in email:
             self.email = email
