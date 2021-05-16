@@ -10,4 +10,4 @@ def calculate(number1, number2, operator):
     elif '*' in operator:
         return number1 * number2
     else:
-        return 'No valid operator!'
+        return "No valid operator!"

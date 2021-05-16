@@ -1,43 +1,43 @@
 from teacher import Teacher
 
 
-def test_class_teacher():
-    # input
-    name = "Alma"
-    years_xp = 15
-    is_ma = False
-    topics = ["math", "estonian"]
+class TestCreateTeacher:
 
-    # process
-    teacher = Teacher(name, years_xp, is_master=is_ma, topics=topics)
+    def test_class_teacher(self):
+        # input
+        name = "Alma"
+        years_xp = 15
+        is_ma = False
+        topics = ["math", "estonian"]
 
-    # assert
-    assert isinstance(teacher, Teacher) is not None
+        # process
+        teacher = Teacher(name, years_xp, is_master=is_ma, topics=topics)
 
+        # assert
+        assert isinstance(teacher, Teacher) is not None
 
-def test_default_values():
-    # input
-    name = "Ülle"
-    years_xp = 10
+    def test_default_values(self):
+        # input
+        name = "Ülle"
+        years_xp = 10
 
-    # process
-    teacher = Teacher(name, years_xp)
+        # process
+        teacher = Teacher(name, years_xp)
 
-    # assert
-    assert teacher.name == "Ülle"
-    assert teacher.is_master is False
-    assert teacher.topics == []
+        # assert
+        assert teacher.name == "Ülle"
+        assert teacher.is_master is False
+        assert teacher.topics == []
 
+    def test_count_topics(self):
+        # input
+        name = "Anna"
+        years_xp = 1
+        is_ma = True
+        topics = ["math", "Estonian", "English"]
 
-def test_count_topics():
-    # input
-    name = "Anna"
-    years_xp = 1
-    is_ma = True
-    topics = ["math", "Estonian", "English"]
+        # process
+        teacher = Teacher(name, years_xp, is_master=is_ma, topics=topics)
 
-    # process
-    teacher = Teacher(name, years_xp, is_master=is_ma, topics=topics)
-
-    # assert
-    assert teacher.topics_taught() == 3
+        # assert
+        assert teacher.topics_taught() == 3
