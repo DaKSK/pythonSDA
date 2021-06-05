@@ -1,0 +1,8 @@
+[run]
+source = .
+branch = true
+omit =
+    */tests.py,
+    testcases.py,
+    */venv/*,
+    */test_*.py
