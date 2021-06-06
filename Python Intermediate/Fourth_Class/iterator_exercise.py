@@ -31,9 +31,9 @@ class EvensAndOdds:
                 else:
                     return self.__next__()
             else:
-                return self.__next__()
+                return current
 
 
-evens_iterator = EvensAndOdds(1, 15, "odds")
+evens_iterator = EvensAndOdds(1, 15, "any")
 for item in evens_iterator:
     print(item)
