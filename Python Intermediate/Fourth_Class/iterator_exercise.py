@@ -34,6 +34,6 @@ class EvensAndOdds:
                 return self.__next__()
 
 
-evens_list = EvensAndOdds(5, 40, "odds")
-for item in evens_list:
+evens_iterator = EvensAndOdds(1, 15, "odds")
+for item in evens_iterator:
     print(item)
