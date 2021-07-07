@@ -42,7 +42,7 @@ class LinkedList:
 		self.tail = newest
 		self.size += 1
 
-	# Add a node between other nodes
+	# Add a node between two other nodes
 	def between(self, item, left_side, right_side):
 		if self.size < 2:
 			raise Empty("The linked list has too few elements, can't add between")
@@ -88,7 +88,8 @@ class LinkedList:
 		while seeker:
 			print(seeker.element, end="-->")
 			seeker = seeker.next  # move seeker to next node
-		print()  # new line
+		print()
+		print("List size", self.size)  # new line
 
 
 linked_list = LinkedList()
@@ -100,4 +101,5 @@ linked_list.display()
 linked_list.add_first(10)
 linked_list.between(20, 10, 30)
 linked_list.between(25, 20, 30)
+linked_list.add_last(40)
 linked_list.display()

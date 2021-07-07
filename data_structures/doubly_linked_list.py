@@ -30,6 +30,7 @@ class DoublyLinkedList:
 			newest = Node(item)
 			self.head = newest
 			self.tail = newest
+			self.size += 1
 		else:
 			newest = Node(item)
 			current = self.head
@@ -39,6 +40,7 @@ class DoublyLinkedList:
 			newest.previous = current  # Changing the new node previous pointer to current selection
 			newest.next = None
 			self.tail = newest
+			self.size += 1
 
 	def prepend(self, item):
 		if self.head is None:
@@ -54,17 +56,14 @@ class DoublyLinkedList:
 			newest.previous = None
 			self.size += 1
 
-	def squeeze(self, this, between_this, and_that):
-		if self.get_size() < 2:
-			raise TooFew("Not enough nodes to squeeze, try .append/.prepend first")
+	def squeeze_in_after(self, this, after_that):
+		if self.get_size() < 1:
+			raise TooFew("Not enough nodes to squeeze after, try .append/.prepend first")
 		else:
 			new_node = Node(this)
 			seeker = self.head
 			while seeker:
-				print("Seeker is ", seeker)
-				if seeker.element == between_this and seeker.next.element == and_that:
-					print("Selection now is:", seeker)
-					print(f"making new node point to {seeker.next}")
+				if seeker.element == after_that:
 					new_node.next = seeker.next
 					seeker.next.previous = new_node
 					seeker.next = new_node
@@ -83,6 +82,7 @@ class DoublyLinkedList:
 			while back_seek:
 				print(f"<--{back_seek.element}", end="->")
 				back_seek = back_seek.previous
+		print()
 
 
 d_link_list = DoublyLinkedList()
@@ -90,13 +90,10 @@ d_link_list = DoublyLinkedList()
 d_link_list.append(10)
 d_link_list.append(20)
 d_link_list.append(30)
-d_link_list.squeeze(25, 20, 30)
-d_link_list.squeeze(15, 10, 20)
+d_link_list.squeeze_in_after(25, 20)
+d_link_list.squeeze_in_after(15, 10)
 d_link_list.prepend(0)
 d_link_list.append(35)
+d_link_list.squeeze_in_after(12, 10)
 d_link_list.display()
-
-
-
-
-
+print("Size of DL-list is", d_link_list.get_size())

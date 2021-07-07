@@ -1,5 +1,6 @@
 from exceptions import Empty
 
+
 class Queue:
 	def __init__(self):
 		self.queue = []
