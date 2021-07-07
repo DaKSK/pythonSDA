@@ -19,14 +19,13 @@ class Stack:
 
 
 def is_matching_brackets(string):
-	stack = []
-	# stack = Stack() Stack version outputs False, while True
+	stack = Stack()
 	openers = "({["
 	for symbol in string:
 		if symbol in openers:
-			stack.append(symbol)
+			stack.push(symbol)
 		else:		# If symbol is not an opener, it's a closer
-			if not stack:
+			if not stack.items:
 				return False		# If stack is empty we can't have matches
 			other_symbol = stack.pop()		# Assuming the closer is correct we pop, but save to check
 			if other_symbol == "(":		# Checking case of (
@@ -38,11 +37,12 @@ def is_matching_brackets(string):
 			elif other_symbol == "{":		# Checking case of {
 				if symbol != "}":
 					return False		# False because we closed "{" with something other than "}"
-	if not stack:
+	if not stack.items:
 		return True
 	else:
 		return False
 
 
-sequence_string = "([)]"
-print(is_matching_brackets(sequence_string))
+if __name__ == "__main__":
+	sequence_string = "[{()()()}{([])}{}[()()()]]"
+	print(is_matching_brackets(sequence_string))
