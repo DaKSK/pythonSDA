@@ -8,7 +8,9 @@ class Node:
 		self.previous = previous
 
 	def __str__(self):
-		return f"Node with value {self.element}"
+		prev_string = "<-->" if self.previous else ""
+		next_string = f"{self.next}" if self.next else ""
+		return f"{prev_string} {self.element} {next_string}"
 
 
 class DoublyLinkedList:
@@ -84,16 +86,32 @@ class DoublyLinkedList:
 				back_seek = back_seek.previous
 		print()
 
+	def print_list(self):
+		return print(str(self.head))
+
+	def return_penultimate(self):
+		return self.tail.previous
+
+	def extend_with_list(self, extension):
+		for item in extension:
+			self.append(item)
+
+	def extend_with_llist(self, llist):
+		seeker = llist.head
+		while seeker:
+			self.append(seeker.element)
+			seeker = seeker.next
+
 
 d_link_list = DoublyLinkedList()
-
+d_link_list2 = DoublyLinkedList()
 d_link_list.append(10)
 d_link_list.append(20)
 d_link_list.append(30)
-d_link_list.squeeze_in_after(25, 20)
-d_link_list.squeeze_in_after(15, 10)
-d_link_list.prepend(0)
-d_link_list.append(35)
-d_link_list.squeeze_in_after(12, 10)
-d_link_list.display()
+d_link_list2.append(40)
+d_link_list2.append(50)
+d_link_list2.append(60)
+d_link_list.extend_with_llist(d_link_list2)
+d_link_list.print_list()
+# d_link_list.print_list()
 print("Size of DL-list is", d_link_list.get_size())
