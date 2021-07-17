@@ -33,7 +33,7 @@ class TreeNode:
         total_size = 0
         if not self.children:
             return self.data["size"]
-        elif self.children:
+        else:
             for child in self.children:
                 total_size += self.data["size"] + child.get_size()
             return total_size
