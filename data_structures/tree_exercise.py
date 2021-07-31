@@ -30,18 +30,15 @@ class TreeNode:
                 child.visualize_tree()
 
     def get_size(self):
-        total_size = 0
         if not self.children:
             return self.data["size"]
         else:
-            for child in self.children:
-                total_size += self.data["size"] + child.get_size()
-            return total_size
+            return sum(self.data["size"] + child.get_size() for child in self.children)
 
 
 def build_tree():
     # Building the tree from example5.png
-    # Creating the root and it's 2 children
+    # Creating the root node and it's 2 children nodes
     root = TreeNode("Home")
     jakub = TreeNode("jakub")
     var = TreeNode("var")
@@ -63,6 +60,10 @@ def build_tree():
 
 if __name__ == "__main__":
     dirs = build_tree()
-    print(dirs.get_size(), "bytes")
     dirs.visualize_tree()
+    print("Home folder size is", dirs.get_size(), "bytes")
+    jakub_node_index = dirs.children.index("jakub")
+    jakub_folder = dirs.children[jakub_node_index]
+    print("home/jakub/ size is", jakub_folder.get_size())
+
 

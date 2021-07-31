@@ -46,14 +46,13 @@ class LinkedList:
 	def between(self, item, left_side, right_side):
 		if self.size < 2:
 			raise Empty("The linked list has too few elements, can't add between")
-		else:
-			new_node = self.Node(item, None)
-			seeker = self.head
-			while seeker:
-				if seeker.element == left_side and seeker.next.element == right_side:
-					new_node.next = seeker.next
-					seeker.next = new_node
-				seeker = seeker.next
+		new_node = self.Node(item, None)
+		seeker = self.head
+		while seeker:
+			if seeker.element == left_side and seeker.next.element == right_side:
+				new_node.next = seeker.next
+				seeker.next = new_node
+			seeker = seeker.next
 		self.size += 1
 
 	# Remove the first node
@@ -72,10 +71,8 @@ class LinkedList:
 		if self.is_empty():
 			raise Empty("Linked list is empty")
 		seeker = self.head
-		i = 0
-		while i < len(self) - 2:  # -2 Because we need to access the previous node pointer
+		for _ in range(len(self) - 2):  # -2 Because we need to access the previous node pointer
 			seeker = seeker.next
-			i += 1
 		self.tail = seeker
 		value = seeker.element
 		self.tail.next = None
